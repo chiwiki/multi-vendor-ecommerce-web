@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Activation, Login, SignUp } from "./pages";
+import "react-toastify/dist/ReactToastify.css";
+
+import { useEffect } from "react";
+
+import Store from "./redux/store";
+import { ToastContainer } from "react-toastify";
+
+import { loadUser } from "./redux/actions/user";
 
 function App() {
+  useEffect(() => {
+    Store.dispatch(loadUser());
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <h1>Hello</h1>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/activation/:activation_token" element={<Activation />} />
+      </Routes>
+      <ToastContainer />
+    </Router>
   );
 }
 
