@@ -3,7 +3,6 @@ import { LoginForm } from "../components";
 const Login = () => {
   return (
     <div className="max-sm:px-5">
-      Login
       <LoginForm />
     </div>
   );

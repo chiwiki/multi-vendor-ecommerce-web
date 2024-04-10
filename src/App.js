@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Activation, Login, SignUp } from "./pages";
+import { Activation, Homepage, Login, SignUp } from "./pages";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useEffect } from "react";
@@ -15,8 +15,8 @@ function App() {
   }, []);
   return (
     <Router>
-      <h1>Hello</h1>
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/activation/:activation_token" element={<Activation />} />
